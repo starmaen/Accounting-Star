@@ -4,10 +4,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.tooling.preview.Preview
 
-class UserManager {
-    // ... (محتوى UserManager.kt)
-}
-
 @Composable
 fun LoginScreen(onLoginSuccess: () -> Unit) {
     var username by remember { mutableStateOf("") }
@@ -22,7 +18,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
         if (loginError != null) {
             Text(loginError!!, color = Color.Red)
         }
-        Button(onClick = { 
+        Button(onClick = {
             if (userManager.authenticate(username, password)) {
                 onLoginSuccess()
             } else {
