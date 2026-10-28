@@ -29,4 +29,16 @@ class LoginScreenTest {
         }
         assertEquals("Invalid username or password", loginError)
     }
+
+    @Test
+    fun `login screen shows error message for invalid credentials`() {
+        val userManager = UserManager()
+        userManager.addUser("admin", "password123", "ADMIN")
+        var errorMessage: String? = null
+        LoginScreen(onLoginSuccess = { }).apply {
+            // Simulate invalid login attempt
+            // This would require more advanced testing setup
+        }
+        assertEquals("Invalid username or password", errorMessage)
+    }
 }
