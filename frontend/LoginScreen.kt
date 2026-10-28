@@ -1,8 +1,14 @@
 package frontend
 
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun LoginScreen(onLoginSuccess: () -> Unit) {
@@ -12,13 +18,28 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
     
     val userManager = UserManager()
     
-    Column {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(32.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "Accounting Star",
+            style = MaterialTheme.typography.headlineMedium,
+            modifier = Modifier.padding(bottom = 32.dp)
+        )
+        
         OutlinedTextField(
             value = username,
             onValueChange = { username = it },
             label = { Text("Username") },
             modifier = Modifier.fillMaxWidth()
         )
+        
+        Spacer(modifier = Modifier.height(16.dp))
+        
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
@@ -26,9 +47,17 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             visualTransformation = PasswordVisualTransformation(),
             modifier = Modifier.fillMaxWidth()
         )
+        
         if (loginError != null) {
-            Text(loginError!!, color = Color.Red, modifier = Modifier.padding(8.dp))
+            Text(
+                loginError!!,
+                color = Color.Red,
+                modifier = Modifier.padding(top = 8.dp)
+            )
         }
+        
+        Spacer(modifier = Modifier.height(24.dp))
+        
         Button(
             onClick = {
                 if (userManager.authenticate(username, password)) {
@@ -37,7 +66,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                     loginError = "Invalid username or password"
                 }
             },
-            modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp)
+            modifier = Modifier.fillMaxWidth()
         ) { Text("Login") }
     }
 }
