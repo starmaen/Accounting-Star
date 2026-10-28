@@ -23,3 +23,10 @@ jobs:
           else
             echo "No Gradle build file found, skipping build."
           fi
+      - name: Run tests
+        run: |
+          if [ -f build.gradle.kts ] || [ -f build.gradle ]; then
+            ./gradlew test
+          else
+            echo "No Gradle build file found, skipping tests."
+          fi
