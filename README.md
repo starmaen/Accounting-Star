@@ -1,2 +1,2 @@
-# Accounting-Star
+# (نجم الحسابات) Accounting Star
 نجم المحاسبة
