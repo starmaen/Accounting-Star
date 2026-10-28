@@ -30,3 +30,10 @@ jobs:
           else
             echo "No Gradle build file found, skipping tests."
           fi
+      - name: Run UI tests
+        run: |
+          if [ -f build.gradle.kts ] || [ -f build.gradle ]; then
+            ./gradlew connectedAndroidTest
+          else
+            echo "No Android test configuration found, skipping UI tests."
+          fi
