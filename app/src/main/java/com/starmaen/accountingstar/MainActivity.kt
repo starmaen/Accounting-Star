@@ -133,7 +133,7 @@ fun MainScaffold(vm: AppViewModel, state: AppUiState) {
                         fontWeight = FontWeight.Bold
                     )
                     Text(
-                        "${state.currentUser?.fullName ?: ""} • ${state.currentBranchName}",
+                        "${state.currentUser?.fullName ?: ""} • ${state.activeBranchName}",
                         fontSize = 12.sp,
                         color = Color(0xFF77736B),
                         modifier = Modifier.padding(top = 4.dp)
